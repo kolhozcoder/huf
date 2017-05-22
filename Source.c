@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#define chen
 #include "stdlib.h"
 #include "string.h"
 #include "stdio.h"

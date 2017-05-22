@@ -7,7 +7,7 @@ typedef struct treenode treeNode;
 struct treenode
 {
 	treeNode *link[2];
-	char value;
+	unsigned char value;
 };
 
 
@@ -16,7 +16,7 @@ void swap(treeNode *n1, treeNode *n2)
 {
 	treeNode* tmp0 = n1->link[0];
 	treeNode* tmp1 = n1->link[1];
-	char tmpval = n1->value;
+	unsigned char tmpval = n1->value;
 	n1->value = n2->value;
 	n1->link[0] = n2->link[0];
 	n1->link[1] = n2->link[1];
@@ -25,7 +25,7 @@ void swap(treeNode *n1, treeNode *n2)
 	n2->value = tmpval;
 }
 
-treeNode* createNode(char val)
+treeNode* createNode(unsigned char val)
 {
 	treeNode *node = malloc(sizeof(treeNode));
 	node->value = val;
@@ -216,21 +216,4 @@ int treeHeight(treeNode *root)
 		return treeHeight(root->link[0]) > treeHeight(root->link[1]) ? treeHeight(root->link[0]) + 1 : treeHeight(root->link[1]) + 1;
 }
 
-int bfs(treeNode* root, char searchvalue, unsigned int *length)
-{
-	if (root->value == searchvalue && root->link[0] == NULL)
-	{
-		*length++;
-		return 2;
-	}
-	if (bfs(root->link[0], searchvalue, length) == 2)
-	{
-		*length++;
-		return 0;
-	}
-	if (bfs(root->link[0], searchvalue, length) == 2)
-	{
-		*length++;
-		return 0;
-	}
-}
+
